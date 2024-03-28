@@ -1,0 +1,175 @@
+:root {
+    --animationDuration: 15s;
+}
+
+@font-face {
+    font-family: 'Reith Sans'; font-weight: 700;
+    src: url("/reith/WOFF2/BBCReithSans_W_Bd.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'Reith Sans'; font-weight: 400;
+    src: url("/reith/WOFF2/BBCReithSans_W_Rg.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'Reith Serif'; font-weight: 400;
+    src: url("/reith/WOFF2/BBCReithSerif_W_Rg.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'Reith Serif'; font-weight: 700;
+    src: url("/reith/WOFF2/BBCReithSerif_W_Md.woff2") format('woff2');
+}
+body {
+    background-image: linear-gradient(darkred, rgb(99, 0, 0)), url(base.jpg);
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+.sel-0 .bgline {
+    background: #D80000;
+}
+.sel-0 .line { background: white; }
+.sel-1 .line { background: #D80000; }
+.active .line { animation: var(--animationDuration) lineanim linear forwards; display: block; }
+.sel-1 .bgline {
+    background: white;
+}
+.sel-1 .static {
+    background: #D80000;
+}
+.bgline, .line { height: 0.25vmax; }
+.chameleon { position: absolute; width: 100vw; height: 100vh; }
+span { color: white; }
+.headline { width: 40vmax; padding-left: 1.5vmax; height: 36.35vmax; margin-top: 11.2vmax; position: relative; }
+#newswrapper { display: contents; gap: 0.5em; overflow: hidden; user-select: none; width: 87.3vmax; }
+.qrwrapper { width: 7vmax; } /* 75px */
+.headline, .qrwrapper, .imagewrap { overflow: hidden; }
+.newsimage { 
+    animation: var(--animationDuration) slideimage cubic-bezier(0.76, 0, 0.24, 1) infinite;
+} 
+.imagewrap { 
+    margin-top: 11.2vmax; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-top: 0.25vmax solid #D80000;
+    gap: 0;
+}
+.qrwrapper {
+    align-items: flex-end;
+    margin-top: 4.35vmax;
+}
+.qrimage, .news, .newsimage { position: relative; }
+.headline, .newsimage, .qrwrapper { display: none; }
+.newsimage { aspect-ratio: 16 / 9; height: 24.5vmax; }
+.news, .active .headline, .active .newsimage, .active .qrwrapper {
+    display: flex; flex-direction:column;
+}
+.newsitem { display: flex; }
+.qrimage {
+    width: 7vmax; image-rendering:optimizequality;
+    aspect-ratio: 1/1;
+    flex-grow: 0;
+    animation: var(--animationDuration) slideqr cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+.news { flex-grow: 1; gap: 1vmax;
+    padding-right: 2vmax;
+    margin-top: 1.75vmax;
+animation: var(--animationDuration) slide cubic-bezier(0.76, 0, 0.24, 1) infinite; }
+.title {
+    font-family: 'BBC Reith Serif', 'Reith Serif';
+    font-size: 3.3vmax;
+    font-weight: 700;
+    line-height: 3.35vmax;
+}
+.brief {
+    font-family: 'BBC Reith Sans', 'Reith Sans';
+    font-size: 1.8vmax;
+    font-weight: 400;
+}
+#spin1 {
+    width: 114vmax;
+    left: 46.5vmax;
+    position: absolute;
+    top: -58vmax;
+    z-index: -2;
+    animation: sbin 60s infinite forwards;
+    animation-timing-function: ease;
+    animation-timing-function: cubic-bezier(.03,1.04,0,.57);
+}
+.sphere1, .sphere2 {
+    width: 100%;
+    height: 100%;
+}
+@keyframes lineanim {
+    0%{
+        width: 0%;
+    }
+    99% {
+        width: 100%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes slide {
+    0% {
+        left: -8vmax;
+        opacity: 0;
+    }
+    10% {
+        left: 0;
+        opacity: 1;
+    }
+    90% {
+        left: 0;
+        opacity: 1;
+   }
+    100% {
+        left: 7vmax;
+        opacity: 0;
+    }
+}
+@keyframes slideqr {
+    0% {
+        left: -15vmax;
+    }
+    9% {
+        left: 0;
+    }
+    90% {
+        left: 0;
+    }
+    100% {
+        left: 7vmax;
+    }
+}
+@keyframes opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes sbin {
+    0% {
+        transform: rotate(-110deg);
+    }
+    100% {
+        transform: rotate(130deg);
+    }
+}
+@keyframes slideimage {
+    0% {
+        left: -45vmax;
+    }
+    10% {
+        left: 0;
+    }
+    90% {
+        left: 0;
+    }
+    100% {
+        left: 45vmax;
+    }
+}
